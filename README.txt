@@ -5,6 +5,10 @@ ActiveRecord Validations but are not backed by database tables. The plugin is de
 to make it possible to use the ActiveForm derived classes in a very similar manner to
 the ActiveRecord::Base derived objects.
 
+Originally described at;
+
+http://www.realityforge.org/articles/2005/12/02/validations-for-non-activerecord-model-objects
+
 == How To Define An ActiveForm Object
 
 class Search < ActiveForm
