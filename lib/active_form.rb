@@ -1,5 +1,6 @@
 # Note ".valid?" method  must occur on object for validates_associated
 class ActiveForm
+  include Reloadable::Subclasses
   
   def initialize(attributes = nil)
     if attributes
@@ -58,18 +59,5 @@ protected
     alias validate_on_create raise_not_implemented_error
     alias validate_on_update raise_not_implemented_error
     alias save_with_validation raise_not_implemented_error    
-  end
-end
-
-require 'dispatcher'
-class Dispatcher
-  class << self
-    if ! method_defined?(:form_original_reset_application!) 
-      alias :form_original_reset_application! :reset_application!
-      def reset_application!
-        form_original_reset_application!
-        Dependencies.remove_subclasses_for(ActiveForm) if defined?(ActiveForm)
-      end
-    end
   end
 end

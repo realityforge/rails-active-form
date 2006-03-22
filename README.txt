@@ -43,3 +43,4 @@ Latest Version: http://www.realityforge.org/svn/public/code/active-form/trunk/
 == Credits
 
 Peter Donald <peter at realityforge dot org>.
+Trevor Squires for suggestion to use Reloadable::Subclasses rather than dispatcher hack.
