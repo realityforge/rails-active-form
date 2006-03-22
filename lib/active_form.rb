@@ -39,6 +39,7 @@ protected
   # these methods must be defined before include
   alias save raise_not_implemented_error
   alias update_attribute raise_not_implemented_error
+  alias save! raise_not_implemented_error
 
 public
   include ActiveRecord::Validations
@@ -47,8 +48,6 @@ protected
 
   # the following methods must be defined after include so that they overide
   # methods previously included
-  alias save! raise_not_implemented_error
-
   class << self
     def raise_not_implemented_error(*params)
       raise NotImplementedError
