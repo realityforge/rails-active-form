@@ -3,12 +3,14 @@ class ActiveForm
   include Reloadable::Subclasses
   
   def initialize(attributes = nil)
-    if attributes
-      attributes.each do |key,value|
-        send(key.to_s + '=', value)
-      end
-    end
+    self.attributes = attributes
     yield self if block_given?
+  end
+
+  def attributes=(attributes)
+    attributes.each do |key,value|
+      send(key.to_s + '=', value)
+    end unless attributes.nil?
   end
 
   def [](key)

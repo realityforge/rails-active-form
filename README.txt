@@ -45,4 +45,4 @@ Latest Version: http://www.realityforge.org/svn/public/code/active-form/trunk/
 Peter Donald <peter at realityforge dot org>.
 Dae San Hwang for fix to work with Rails 1.1.
 Trevor Squires for suggestion to use Reloadable::Subclasses rather than dispatcher hack for Rails 1.1.
-
+Tim Lucas for patch to allow bulk addition of attributes.
