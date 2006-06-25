@@ -25,6 +25,8 @@ class ActiveForm
     super
   end
 
+  alias_method :respond_to_without_attributes?, :respond_to?
+
 protected 
   def raise_not_implemented_error(*params)
     ValidatingModel.raise_not_implemented_error(*params)
@@ -38,13 +40,26 @@ protected
     true
   end
 
-  # these methods must be defined before include
+  # these methods must be defined before Validations include
   alias save raise_not_implemented_error
   alias update_attribute raise_not_implemented_error
   alias save! raise_not_implemented_error
+  
+  # The following must be defined prior to Callbacks include
+  alias create_or_update raise_not_implemented_error
+  alias create raise_not_implemented_error
+  alias update raise_not_implemented_error
+  alias destroy raise_not_implemented_error
+
+  def self.instantiate(record)
+    object = allocate
+    object.instance_variable_set("@attributes", record)
+    object
+  end
 
 public
   include ActiveRecord::Validations
+  include ActiveRecord::Callbacks
 
 protected 
 
