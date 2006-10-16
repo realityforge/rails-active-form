@@ -7,6 +7,10 @@ class ActiveForm
     yield self if block_given?
   end
 
+  def attributes
+    self.attributes
+  end
+
   def attributes=(attributes)
     attributes.each do |key,value|
       send(key.to_s + '=', value)
