@@ -8,7 +8,7 @@ class ActiveForm
   end
 
   def attributes
-    self.attributes
+    @attributes
   end
 
   def attributes=(attributes)
