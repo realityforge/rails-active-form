@@ -7,9 +7,7 @@ class ActiveForm
     yield self if block_given?
   end
 
-  def attributes
-    @attributes
-  end
+  attr_accessor :attributes
 
   def attributes=(attributes)
     attributes.each do |key,value|
