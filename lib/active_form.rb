@@ -7,12 +7,16 @@ class ActiveForm
     yield self if block_given?
   end
 
-  attr_accessor :attributes
-
   def attributes=(attributes)
     attributes.each do |key,value|
       send(key.to_s + '=', value)
-    end unless attributes.nil?
+    end if attributes
+  end
+
+  def attributes
+    attributes = instance_variables
+    attributes.delete("@errors")
+    Hash[*attributes.collect { |attribute| [attribute[1..-1], instance_variable_get(attribute)] }.flatten]
   end
 
   def [](key)
@@ -25,6 +29,11 @@ class ActiveForm
       return self[attr_name] if self.respond_to?(attr_name)
     end
     super
+  end
+
+  def to_xml(options = {})
+    options[:root] ||= self.class.to_s.underscore
+    attributes.to_xml(options)
   end
 
   alias_method :respond_to_without_attributes?, :respond_to?
@@ -55,7 +64,7 @@ protected
 
   def self.instantiate(record)
     object = allocate
-    object.instance_variable_set("@attributes", record)
+    object.attributes = record
     object
   end
 
