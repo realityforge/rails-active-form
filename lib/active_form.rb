@@ -1,7 +1,5 @@
 # Note ".valid?" method  must occur on object for validates_associated
 class ActiveForm
-  include Reloadable::Subclasses
-  
   def initialize(attributes = nil)
     self.attributes = attributes
     yield self if block_given?
