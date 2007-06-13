@@ -48,3 +48,4 @@ Trevor Squires for suggestion to use Reloadable::Subclasses rather than dispatch
 Tim Lucas for patch to allow bulk addition of attributes.
 Geoff Schmidt for adding support for Callbacks.
 Sean Christman for attributes getter.
+Jack Christensen for attributes setter.

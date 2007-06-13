@@ -21,6 +21,10 @@ class ActiveForm
     instance_variable_get("@#{key}")
   end
 
+  def []=(key, value)
+    instance_variable_set("@#{key}", value)
+  end
+
   def method_missing( method_id, *args )
     if md = /_before_type_cast$/.match(method_id.to_s)
       attr_name = md.pre_match
@@ -36,6 +40,10 @@ class ActiveForm
 
   alias_method :respond_to_without_attributes?, :respond_to?
 
+  def new_record?
+    true
+  end
+
 protected 
   def raise_not_implemented_error(*params)
     ValidatingModel.raise_not_implemented_error(*params)
@@ -43,10 +51,6 @@ protected
 
   def self.human_attribute_name(attribute_key_name)
     attribute_key_name.humanize
-  end
-
-  def new_record?
-    true
   end
 
   # these methods must be defined before Validations include
