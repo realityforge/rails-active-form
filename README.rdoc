@@ -38,7 +38,6 @@ end
 == Details
 
 License: Released under the MIT license.
-Latest Version: http://www.realityforge.org/svn/public/code/active-form/trunk/
 
 == Credits
 
