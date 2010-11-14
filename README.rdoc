@@ -48,3 +48,4 @@ Tim Lucas for patch to allow bulk addition of attributes.
 Geoff Schmidt for adding support for Callbacks.
 Sean Christman for attributes getter.
 Jack Christensen for attributes setter.
+Troy Anderson for fixing human_attribute_name for localizations.
